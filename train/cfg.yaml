@@ -1,0 +1,46 @@
+embed_dim: 768
+
+vision_model:
+  # name: 'convnext_tiny'
+  # name: 'convnext_small'
+  name: 'convnext_small'
+
+optimizer:
+  _target_: torch.optim.AdamW
+  lr: 1e-4
+  weight_decay: 1e-6
+  eps: 1e-08
+
+text_model:
+  width: 768
+  context_length: 100
+  vocab_size: 49408
+  fusion_layers: 1
+  heads: 8
+  bert_model_name: 'microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext'
+  mask_ratio: 0.15
+  mlm: True
+
+data:
+  train_json_path: ""
+  valid_json_path: ""
+  image_main_path : ""
+
+  effective_batch_size: 64
+  batch_size: 8
+  image_size: [1024,768]
+  num_workers: 6
+
+
+trainparams:
+  n_gpu: 1
+  experiment_name: ""
+  logger : "wandb"
+  max_epochs: 75
+  train_transforms: "heavy" 
+  # train_transforms: "soft" 
+  checkpoint_dir_path: ""
+  project_name: ""
+  
+
+
