@@ -1,4 +1,5 @@
-# Image and Caption Extraction from Medical Books
+# Integrating Image Interpretation and Textual Context for Improved Breast Imaging Classification
+
 
 
 ## Folder Structure
@@ -18,6 +19,8 @@ The `train/` folder contains the following Python scripts:
 - `files/dataset.py`: Image-Text dataset file.
 
 ## Image and Caption Extraction from Medical Books
+
+We extract image-caption pairs from the following books that are used in the pretraining.
 
 1. **Atlas of Mammography, 3rd Edition**  
    [Link to Book](https://www.amazon.com/Atlas-Mammography-Ellen-Shaw-deParedes/dp/0781764335)
