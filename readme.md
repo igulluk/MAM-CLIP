@@ -64,4 +64,4 @@ Our vision language model code is based on  [PMC-CLIP](https://github.com/Weixio
  and [OpenCLIP](https://github.com/mlfoundations/open_clip). We followed the preprocessing pipeline of (https://github.com/dangnh0611/kaggle_rsna_breast_cancer) using YOLOX model to crop the breast region in mammography images. 
 
 ## Contact
-If you have any question, please feel free to contact gulluk@stanford.edu .
+If you have any questions, feel free to reach out at gulluk@stanford.edu.
