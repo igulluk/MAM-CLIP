@@ -63,5 +63,18 @@ python data-extract/extract_acr.py --pdf_file_path /path/to/birads_atlas.pdf --j
 Our vision language model code is based on  [PMC-CLIP](https://github.com/WeixiongLin/PMC-CLIP/tree/main)
  and [OpenCLIP](https://github.com/mlfoundations/open_clip). We followed the preprocessing pipeline of (https://github.com/dangnh0611/kaggle_rsna_breast_cancer) using YOLOX model to crop the breast region in mammography images. 
 
+
+## Citation
+```bash
+@inproceedings{
+gulluk2024integrating,
+title={Integrating Image Interpretation and Textual Context for Improved Breast Imaging Classification},
+author={Halil Ibrahim Gulluk and Olivier Gevaert},
+booktitle={Advancements In Medical Foundation Models: Explainability, Robustness, Security, and Beyond},
+year={2024},
+url={https://openreview.net/forum?id=Sqom7PZBxe}
+}
+```
+
 ## Contact
 If you have any questions, feel free to reach out at gulluk@stanford.edu.
