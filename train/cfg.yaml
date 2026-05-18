@@ -20,6 +20,7 @@ text_model:
   bert_model_name: 'microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext'
   mask_ratio: 0.15
   mlm: True
+  mlm_coeff: 0.5   # lambda: weight of the MLM loss relative to the contrastive loss
 
 data:
   train_json_path: ""
@@ -40,6 +41,7 @@ trainparams:
   train_transforms: "heavy" 
   # train_transforms: "soft" 
   checkpoint_dir_path: ""
+  lightning_log_dir_path: ""   # only used when logger == "tensorboard"
   project_name: ""
   
 

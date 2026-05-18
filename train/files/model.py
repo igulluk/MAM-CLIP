@@ -18,6 +18,14 @@ from dataclasses import dataclass
 
 
 class VLModel(nn.Module):
+    """Vision-language model for mammography pretraining.
+
+    Combines an ImageNet-pretrained ConvNeXt vision encoder with a
+    pretrained PubMedBERT text encoder, plus a small transformer fusion
+    module. Trained with a CLIP-style contrastive (InfoNCE) loss and a
+    masked language modeling (MLM) loss, following PMC-CLIP.
+    """
+
     def __init__(self, cfg):
         super().__init__()
         self.cfg = cfg
@@ -139,13 +147,12 @@ class VLModel(nn.Module):
             )  # [batch_size=128, n_ctx=77, vocab_size=49409]
 
         attentions = None
-        text_output = dict.fromkeys(
-            ["text_features", "bert_prediction", "attentions", "encoded_label"], None
-        )
-        for key in text_output:
-            text_output[key] = eval(key)  # HACK dark magic, could be dangerous
-
-        return text_output
+        return {
+            "text_features": text_features,
+            "bert_prediction": bert_prediction,
+            "attentions": attentions,
+            "encoded_label": encoded_label,
+        }
 
     def forward(self, batch):
         image = batch["images"]
@@ -186,6 +193,12 @@ class VLModel(nn.Module):
 
 
 class lightningModel(pl.LightningModule):
+    """PyTorch Lightning wrapper around :class:`VLModel`.
+
+    The total loss is ``match_loss + mlm_coeff * mlm_loss``. The best
+    checkpoint is selected on ``valid_loss`` (see ``main.py``).
+    """
+
     def __init__(self, cfg) -> None:
         super().__init__()
         self.cfg = cfg
@@ -193,7 +206,8 @@ class lightningModel(pl.LightningModule):
         self.VLModel = VLModel(cfg)
         self.training_step_outputs = []
         self.validation_step_outputs = []
-        self.mlm_coeff = 0.5
+        # MLM loss weight (lambda in the paper); configurable, default 0.5.
+        self.mlm_coeff = cfg.text_model.get("mlm_coeff", 0.5)
 
     def training_step(self, batch, batch_idx):
         output = self.VLModel.forward(batch)

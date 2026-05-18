@@ -3,7 +3,11 @@ from files.dataset import ImgTextDataset, Transforms
 
 
 def get_loaders(cfg):
+    """Build the train/validation ``DataLoader`` pair from ``cfg``.
 
+    The training loader uses heavy augmentation when
+    ``cfg.trainparams.train_transforms == "heavy"``, otherwise a plain resize.
+    """
     transforms = Transforms(cfg)
     train_transform = (
         transforms.train_transforms_heavy

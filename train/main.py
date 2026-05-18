@@ -4,15 +4,12 @@ import lightning.pytorch as pl
 import hydra
 
 from omegaconf import DictConfig
-from datetime import datetime
-from lightning.pytorch.callbacks import DeviceStatsMonitor
 from lightning.pytorch import loggers as pl_loggers
-from pytorch_lightning.loggers import WandbLogger
+from lightning.pytorch.loggers import WandbLogger
 from lightning.pytorch.callbacks import ModelCheckpoint
+from lightning.pytorch.strategies import DDPStrategy
 from files.model import lightningModel
 from loaders import get_loaders
-from lightning.pytorch.strategies import DDPStrategy
-import os
 
 os.environ["TOKENIZERS_PARALLELISM"] = "True"
 pl.seed_everything(42)
@@ -20,8 +17,12 @@ torch.set_float32_matmul_precision("high")
 
 
 def train(cfg):
-    # experiment_name = datetime.now().strftime("%m-%d-%H-%M-%S")
+    """Run vision-language pretraining with the Hydra ``cfg``.
 
+    Sets up the data loaders, the Lightning model, gradient accumulation
+    (to reach ``effective_batch_size``), the W&B/TensorBoard logger and a
+    checkpoint callback that saves on the best ``valid_loss``.
+    """
     accumulation = (
         cfg.data.effective_batch_size // cfg.data.batch_size
     ) // cfg.trainparams.n_gpu

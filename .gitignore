@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Experiment / training artifacts
+*.ckpt
+*.pth
+wandb/
+lightning_logs/
+outputs/
+multirun/
+checkpoints/
+
+# Data (released separately; never commit raw data)
+*.zip
+*.dcm
+all_pngs/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+build_metadata.py

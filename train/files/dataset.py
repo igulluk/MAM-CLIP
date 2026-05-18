@@ -61,12 +61,11 @@ def base_masker(
 
     logging.debug(f"\033[42moutput_mask:\033[0m {output_mask}")
 
-    token_result = dict.fromkeys(
-        ["bert_input_tokens", "output_mask", "bert_label_tokens"], None
-    )
-    for key in token_result:
-        token_result[key] = eval(key)  # HACK dark magic, could be dangerous
-    return token_result
+    return {
+        "bert_input_tokens": bert_input_tokens,
+        "output_mask": output_mask,
+        "bert_label_tokens": bert_label_tokens,
+    }
 
 
 def encode_mlm(
@@ -115,6 +114,14 @@ def encode_mlm(
 
 
 class ImgTextDataset(Dataset):
+    """Image--caption dataset for vision-language pretraining.
+
+    Reads a ``.json`` (list of records) or ``.jsonl`` file, where each
+    record has an ``"image"`` path (relative to ``cfg.data.image_main_path``)
+    and a ``"caption"`` string. Each item returns the transformed image and
+    the BERT-style masked input / label token strings for the MLM objective.
+    """
+
     def __init__(self, cfg, transforms, phase):
         logging.debug(f"Loading json file")
 
@@ -129,7 +136,7 @@ class ImgTextDataset(Dataset):
                 self.json = json.load(json_file)
         elif json_path[-5:] == "jsonl":
             with open(json_path, "r") as json_file:
-                self.json = [eval(x) for x in list(json_file)]
+                self.json = [json.loads(line) for line in json_file]
         else:
             assert False, "Incorrect Json File Extension"
 
@@ -194,6 +201,9 @@ class ImgTextDataset(Dataset):
 
 
 class Transforms:
+    """Albumentations pipelines: plain resize, and a heavy-augmentation
+    variant (flips, random downscaling, grid distortion) for training."""
+
     def __init__(self, cfg):
         self.train_transforms = A.Compose(
             [
