@@ -4,6 +4,8 @@ Official code and data release for the paper **"MAM-CLIP: Vision–Language
 Pretraining on Mammography Atlases for BI-RADS Classification"**
 (Halil Ibrahim Gulluk, Olivier Gevaert).
 
+**Paper:** [arXiv:2605.19359](https://arxiv.org/abs/2605.19359)
+
 We pretrain a vision-language model on **2,313 mammogram image–caption pairs**
 extracted from two mammography atlases (CLIP-style contrastive loss + masked
 language modeling, following PMC-CLIP), then fine-tune the vision encoder for
@@ -121,13 +123,14 @@ See `train/mam_clip_load.ipynb` for loading examples.
 ## Citation
 
 ```bibtex
-@misc{gulluk2025mamclip,
+@misc{gulluk2026mamclip,
   title         = {MAM-CLIP: Vision--Language Pretraining on Mammography Atlases for BI-RADS Classification},
   author        = {Halil Ibrahim Gulluk and Olivier Gevaert},
-  year          = {2025},
-  eprint        = {<<ARXIV_ID_PENDING>>},
+  year          = {2026},
+  eprint        = {2605.19359},
   archivePrefix = {arXiv},
-  primaryClass  = {cs.CV}
+  primaryClass  = {cs.CV},
+  url           = {https://arxiv.org/abs/2605.19359}
 }
 ```
 

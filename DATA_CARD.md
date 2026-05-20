@@ -19,9 +19,10 @@ both**:
    BI-RADS Annotations for Artificial Intelligence Applications.* Radiology:
    Artificial Intelligence, 7(6):e240841, 2025. DOI: 10.1148/ryai.240841.
    PMID: 40801802. https://pubmed.ncbi.nlm.nih.gov/40801802/
-2. **This work** — Gulluk & Gevaert, *Integrating Image Interpretation and
-   Textual Context for Improved Breast Imaging Classification* (see the
-   repository README for the BibTeX entry).
+2. **This work** — Gulluk & Gevaert, *MAM-CLIP: Vision--Language Pretraining
+   on Mammography Atlases for BI-RADS Classification*,
+   [arXiv:2605.19359](https://arxiv.org/abs/2605.19359), 2026 (BibTeX in the
+   repository README).
 
 ## License
 
