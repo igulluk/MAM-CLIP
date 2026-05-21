@@ -14,15 +14,15 @@ metadata file built from the official patient-level annotation spreadsheets.
 This is a **preprocessed redistribution**. Any use of this data **must cite
 both**:
 
-1. **Original source** — Koç U., Karakaş E., Sezer E. A., et al.
+1. **This work** — Gulluk & Gevaert, *MAM-CLIP: Vision--Language Pretraining
+   on Mammography Atlases for BI-RADS Classification*,
+   [arXiv:2605.19359](https://arxiv.org/abs/2605.19359), 2026 (BibTeX in the
+   repository README).
+2. **Original source** — Koç U., Karakaş E., Sezer E. A., et al.
    *MammosighTR: Nationwide Breast Cancer Screening Mammogram Dataset with
    BI-RADS Annotations for Artificial Intelligence Applications.* Radiology:
    Artificial Intelligence, 7(6):e240841, 2025. DOI: 10.1148/ryai.240841.
    PMID: 40801802. https://pubmed.ncbi.nlm.nih.gov/40801802/
-2. **This work** — Gulluk & Gevaert, *MAM-CLIP: Vision--Language Pretraining
-   on Mammography Atlases for BI-RADS Classification*,
-   [arXiv:2605.19359](https://arxiv.org/abs/2605.19359), 2026 (BibTeX in the
-   repository README).
 
 ## License
 
@@ -32,6 +32,8 @@ citations.
 
 ## Download
 
+- Hugging Face (recommended; dataset viewer + `load_dataset`):
+  https://huggingface.co/datasets/gulluk/mammosightr-preprocessed
 - Google Drive folder:
   https://drive.google.com/drive/folders/1DocoIdTt_gfU1WfbOMDeZYer2EIQLnfE?usp=sharing
 - Archive: `all_pngs.zip` (in the folder above; ~11 GB)

@@ -54,15 +54,21 @@ metadata file** (`metadata_image_level.json`) that maps each image to its
 BI-RADS label, laterality, view, breast composition and English-translated
 finding locations.
 
-- **Download:** [Google Drive folder](https://drive.google.com/drive/folders/1DocoIdTt_gfU1WfbOMDeZYer2EIQLnfE?usp=sharing)
+- **Hugging Face (recommended):** [`gulluk/mammosightr-preprocessed`](https://huggingface.co/datasets/gulluk/mammosightr-preprocessed)
+  — browse in the dataset viewer or load directly:
+  ```python
+  from datasets import load_dataset
+  ds = load_dataset("gulluk/mammosightr-preprocessed", split="train")
+  ```
+- **Google Drive (raw files):** [folder](https://drive.google.com/drive/folders/1DocoIdTt_gfU1WfbOMDeZYer2EIQLnfE?usp=sharing)
   (contains `all_pngs.zip` and `metadata_image_level.json`) — see [DATA_CARD.md](DATA_CARD.md)
 - **License:** CC BY-NC 4.0 (non-commercial research use).
 - **Required citations — you must cite BOTH:**
-  1. The original dataset source: Koç et al., *MammosighTR: Nationwide
+  1. This paper (see [Citation](#citation)).
+  2. The original dataset source: Koç et al., *MammosighTR: Nationwide
      Breast Cancer Screening Mammogram Dataset with BI-RADS Annotations for
      Artificial Intelligence Applications*, Radiology: Artificial
      Intelligence, 2025. PMID: 40801802 — https://pubmed.ncbi.nlm.nih.gov/40801802/
-  2. This paper (see [Citation](#citation)).
 
 See [DATA_CARD.md](DATA_CARD.md) for the full data card, label-construction
 rule, integrity checksum, and statistics.
